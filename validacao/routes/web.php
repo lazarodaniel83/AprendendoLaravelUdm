@@ -13,6 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/novocliente', function () {
-    return view('novocliente');
-});
+Route::get('/novocliente','ClienteCintrolador@create');
+Route::get('/','ClienteControlador@index');
