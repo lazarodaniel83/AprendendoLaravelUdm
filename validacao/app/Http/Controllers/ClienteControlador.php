@@ -1,10 +1,12 @@
 <?php
 
-use App\Cliente; 
+ 
 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use App\Cliente;
 
 class ClienteControlador extends Controller
 {
@@ -37,7 +39,28 @@ class ClienteControlador extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $regras =
+            [
+                'nome' => 'required|min:5|max:20|unique:clientes',
+                'idade' => 'required',
+                'endereco' => 'required|min:8',
+                'email' => 'required|email'
+            ];
+        $mensagens=
+        [
+            'nome.required' => 'O nome é requerido',
+            'idade.required' => 'A idade é requerida',
+            'endereco.required' => 'O endereço é requerido',
+            'email.required' => 'O email é requerido'
+        ];    
+        $request->validate($regras,$mensagens);
+
+        $cliente = new Cliente();
+        $cliente->nome = $request->input('nome');
+        $cliente->idade = $request->input('idade');   
+        $cliente->endereco = $request->input('endereco');
+        $cliente->email = $request->input('email');
+        $cliente->save();
     }
 
     /**

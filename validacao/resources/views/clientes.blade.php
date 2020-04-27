@@ -12,7 +12,7 @@
         <main role="main">
             <div class="row">
                 <div class="container col-md-8 offset-md-2">
-                    <div class="card-border">
+                    <div class="card border">
                         <div class="card-header">
                             <div class="card-title">
                                 Cadastro de Cliente
@@ -30,12 +30,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($clientes as $c)
-                                       <td>{{$c->id}}</td>
-                                       <td>{{$c->nome}}</td> 
-                                       <td>{{$c->endereco}}</td>
-                                       <td>{{$c->idade}}</td>
-                                       <td>{{$c->email}}</td> 
+                                    @foreach($clientes as $c)
+                                        <tr>
+                                            <td>{{$c->id}}</td>
+                                            <td>{{$c->nome}}</td> 
+                                            <td>{{$c->endereco}}</td>
+                                            <td>{{$c->idade}}</td>
+                                            <td>{{$c->email}}</td> 
+                                        </tr>    
                                     @endforeach
                                 </tbody>
                             </table>    
@@ -44,6 +46,7 @@
                 </div>    
             </div>    
         </main>
+           
         <script src="{{asset('js/app.js')}}" type="text/javascript"></script>
     </body>
 </html>
